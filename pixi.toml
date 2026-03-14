@@ -1,0 +1,44 @@
+[workspace]
+authors = ["Rémi Castaing <remi.castaing@gmail.com>"]
+channels = ["conda-forge"]
+name = "shdb-af-ecg"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+install = "python -m pip install -e ."
+download = "python -m shdbaf.data.download"
+index = "python -m shdbaf.data.index"
+split = "python -m shdbaf.data.splits"
+segments = "python -m shdbaf.data.segments"
+window-counts = "python -m shdbaf.data.window_counts"
+make-windows = "python -m shdbaf.data.windowing"
+mlflow-ui = "mlflow ui --backend-store-uri sqlite:///mlflow.db"
+train = "python -u -m shdbaf.training.train"
+eval = "python -m shdbaf.evaluation.eval"
+
+[dependencies]
+python = ">=3.11,<3.13"
+pip = "*"
+wfdb = "*"
+numpy = ">=2.4.2,<3"
+scipy = "*"
+polars = "*"
+pyarrow = "*"
+typer = "*"
+rich = "*"
+mlflow = ">=3" 
+pytest = "*"
+pandera = "*"
+tqdm = ">=4.67.3,<5"
+pytorch = "*"
+torchvision = "*"
+torchaudio = "*"
+scikit-learn = "*"
+matplotlib = ">=3.10.8,<4"
+protobuf = "==4.25.3"
+pydantic = ">=2"
+pydantic-settings = ">=2"
+tomli = "*"
+psutil = "*"
+

@@ -1,0 +1,43 @@
+seed = 42
+
+[paths]
+raw_dir = "data/raw/shdb-af"
+interim_dir = "data/interim"
+processed_dir = "data/processed"
+artifacts_dir = ".artifacts"
+mlflow_db = "mlflow.db"
+
+[split]
+train_ratio = 0.70
+val_ratio = 0.15
+test_ratio = 0.15
+only_annotated = true
+
+[dataset]
+win_sec = 30
+stride_sec = 5
+channels = "both"          # ecg1|ecg2|both
+majority_thr = 0.60
+classes = ["N", "AFIB", "AFL", "AT"]
+chunk_size = 4096
+format = "npy"             # npy recommandé
+
+[train]
+batch_size = 256
+cache_size = 32
+num_workers = 0
+lr = 1e-3
+epochs = 3
+steps_per_epoch = 2000
+shuffle = true
+log_every = 25
+profile_batches = 150
+warmup_batches = 10
+eval_every = 500          # toutes les 500 itérations
+eval_batches = 40         # évalue sur 40 batches val (≈ 40*batch_size exemples)
+
+[model]
+name = "resnet1d"
+base = 32
+k = 7
+blocks = [2, 2, 2]

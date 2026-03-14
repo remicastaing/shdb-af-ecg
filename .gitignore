@@ -1,0 +1,27 @@
+# data
+data/raw/
+data/interim/
+data/processed/
+
+# mlflow
+mlruns/
+mlflow.db
+
+# artifacts / outputs
+.artifacts/
+__pycache__/
+*.pyc
+.DS_Store
+
+# pixi env
+.pixi/
+pixi.lock
+
+# notebooks
+notebooks/.ipynb_checkpoints/
+
+# logs
+logs/
+
+# docs
+docs/_build/
